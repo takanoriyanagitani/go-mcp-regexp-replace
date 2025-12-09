@@ -1,0 +1,37 @@
+[package]
+name = "rs-regexp-replace-wasi"
+version = "0.1.0"
+edition = "2024"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+
+[profile.release-wasi]
+inherits = "release"
+lto = true
+strip = true
+opt-level = 'z'
+codegen-units = 1
+
+[dependencies.serde]
+version = "1"
+default-features = false
+features = [
+	"std",
+	"derive",
+]
+
+[dependencies.serde_json]
+version = "1"
+default-features = false
+features = [
+	"std",
+]
+
+[dependencies.regex]
+version = "1"
+default-features = true
